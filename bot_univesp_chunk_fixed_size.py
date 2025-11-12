@@ -51,15 +51,17 @@ import uvicorn
 SOURCE_URL = "https://apps.univesp.br/manual-do-aluno/"
 MODEL_EMB = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://localhost:11434")
-OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "  )
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen3:1.7b"  )
 
-CHUNK_SIZE = 800
-CHUNK_OVERLAP = 120
-TOP_K = 5
+CHUNK_SIZE =    3000
+CHUNK_OVERLAP = 150
+TOP_K = 10
 SYSTEM_PROMPT = (
-    "Você é um assistente que responde com base no Manual do Aluno da UNIVESP. Fizemos um RAG fornecendo trechos."
-    "Se não houver informação nos trechos fornecidos, diga claramente que não encontrou no material. "
-    "Responda em português claro e objetivo."
+    "1. Você é um assistente que responde com base no Manual do Aluno da UNIVESP. Fizemos um RAG fornecendo trechos."
+    "2. Se não houver informação nos trechos fornecidos, diga claramente que não encontrou no material. "
+    "3. Responda em português claro e objetivo."
+    "4. Revise a reposta e garanta que não há redundância."
+    "5. Realize inferências simples se necessário. Por exemplo: se há cursos tecnólogos, licenciaturas e bacharelados, e não há menção a licenciatura ou tecnólogo, você pode inferir que o curso é bacharelado e suas regras se aplicam a esse curso."
 )
 
 # Persistência
@@ -284,7 +286,7 @@ async def lifespan(app: FastAPI):
     yield
     # (não há recursos para fechar)
 
-app = FastAPI(title="RAG UNIVESP (Manual do Aluno) + Gemma3 270M", lifespan=lifespan)
+app = FastAPI(title="RAG UNIVESP (Manual do Aluno) + Gemma3 1B", lifespan=lifespan)
 
 @app.get("/healthz")
 def healthz():

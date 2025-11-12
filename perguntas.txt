@@ -1,0 +1,19 @@
+Oi, eu sou a Amanda e vou mostrar nosso assistente funcionando.
+
+A ideia do nosso proejto é permitir a consulta ao Manual do Aluno conversando com um assistente virtual.
+
+Aqui é uma interface de protótipo e podemos colocar alguma pergunta.
+
+Por exemplo:
+Me fale sobre a Univesp
+
+
+Quais cursos tem na Univesp?
+
+Quais modalidades de estágio?
+
+Tem algum curso que seja feito em parceria com outra faculdade?
+
+Como funciona a avaliação?
+
+Me explique sobre o Projeto Integrador
